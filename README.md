@@ -1,1 +1,1 @@
-# hyperflex_hotel_managment_system
+# HYPERFLEX_HMS
