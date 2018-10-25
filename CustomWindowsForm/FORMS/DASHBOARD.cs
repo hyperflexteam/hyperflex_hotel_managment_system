@@ -1426,5 +1426,35 @@ namespace CustomWindowsForm
             room.MdiParent = this;
             room.Show();
         }
+
+        private void eDITRESERVATIONToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(EDIT_RESERVATION))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            Form ITEMS = new EDIT_RESERVATION();
+            ITEMS.MdiParent = this;
+            ITEMS.Show();
+        }
+
+        private void nEWGUESTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == typeof(NEW_GUEST))
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            Form ITEMS = new NEW_GUEST();
+            ITEMS.MdiParent = this;
+            ITEMS.Show();
+        }
     }
 }

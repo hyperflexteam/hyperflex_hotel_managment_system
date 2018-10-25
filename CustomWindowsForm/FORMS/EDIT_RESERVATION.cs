@@ -13,14 +13,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HYFLEX_HMS.Properties;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using HYFLEX_HMS.FORMS;
-using HYFLEX_HMS.CLASS;
 
 namespace CustomWindowsForm.FORMS
 {
-    public partial class RESERVATION : Form
+    public partial class EDIT_RESERVATION : Form
     {
-        public RESERVATION()
+        public EDIT_RESERVATION()
         {
             InitializeComponent();
          
@@ -418,7 +416,7 @@ namespace CustomWindowsForm.FORMS
                 LBL_AGENT_NAME.Enabled = false;
                 CMB_AGENT.Enabled = false;
                 BTN_MAKE_NEW_AGENT.Enabled = false;
-                CMB_AGENT.SelectedIndex = -1;
+                CMB_AGENT.SelectedIndex =- 1;
             }
         }
         private void hyflexComboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -463,7 +461,7 @@ namespace CustomWindowsForm.FORMS
             LBL_RESERVATION_ID.Enabled = false;
             DTP_RESERVATION_DATE.Enabled = false;
             TXT_F_NAME.Enabled = false;
-            TXT_L_NAME.Enabled = false;
+            //TXT_L_NAME.Enabled = false;
             TXT_EMAIL.Enabled = false;
             TXT_TEL.Enabled = false;
             TXT_NO_OF_ROOMS.Enabled = false;
@@ -487,7 +485,7 @@ namespace CustomWindowsForm.FORMS
             LBL_RESERVATION_ID.Enabled = true;
             DTP_RESERVATION_DATE.Enabled = true;
             TXT_F_NAME.Enabled = true;
-            TXT_L_NAME.Enabled = true;
+            //TXT_L_NAME.Enabled = true;
             TXT_EMAIL.Enabled = true;
             TXT_TEL.Enabled = true;
             TXT_NO_OF_ROOMS.Enabled = true;
@@ -508,64 +506,51 @@ namespace CustomWindowsForm.FORMS
         }
         MySqlCommand cmd = CONNECTION.CON.CreateCommand();
         MySqlTransaction myTrans;
-        private void SAVE_RESERVATION()
+
+        private double[] GetNewFoodPrice()
+        {
+
+                CONNECTION.open_connection();
+                double[] newPrice=new double[3];
+                using (MySqlDataAdapter da=new MySqlDataAdapter("SELECT total_adult_food_charges,total_child_food_charges,additional_service_charge FROM recervation_price WHERE reservation_no=@reservation_no", CONNECTION.CON))
+                {
+                    da.SelectCommand.Parameters.Clear();
+                    da.SelectCommand.Parameters.AddWithValue("reservation_no",LBL_RESERVATION_ID.Text);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    if(dt.Rows.Count>0)
+                    {
+                   // MessageBox.Show(dt.Rows[0].Field<double>(0).ToString());
+                        newPrice[0] = (dt.Rows[0].Field<double>(0) / Convert.ToDouble(noOfNights))* Convert.ToDouble(TXT_NO_OF_NIGHTS.Text);
+                        newPrice[1] = (dt.Rows[0].Field<double>(1) / Convert.ToDouble(noOfNights)) * Convert.ToDouble(TXT_NO_OF_NIGHTS.Text);
+                        newPrice[2] = (dt.Rows[0].Field<double>(2) / Convert.ToDouble(noOfNights)) * Convert.ToDouble(TXT_NO_OF_NIGHTS.Text);
+                    }
+                }
+                return newPrice;
+            
+        }
+        private void UPDATE_RESERVATION()
         {
             try
             {
 
-             Cursor.Current = Cursors.WaitCursor;
-            LOCK_CONTROLLERS();
-            CONNECTION.open_connection();
-            myTrans = CONNECTION.CON.BeginTransaction();
-            cmd.Connection = CONNECTION.CON;
-            cmd.Transaction = myTrans;
-            string GUESTID = string.Empty;
-            string RES = CHECK_GUEST_DATA();
-            string RESERVATION_ID = CLS_GENERATE_ID.GEN_NEXT_RESERVATION_NO();
-            if (RES!="N")
-            {
-                    GUESTID = RES;
-            }
-            else
-            {
-                GUESTID = CLS_GENERATE_ID.GEN_NEXT_GUEST_NO();
-                cmd.CommandText = "INSERT INTO guest ( guest_id, id_no, first_name, last_name, mobile_no, gender, passport_no, address, email, country_id ) VALUES ( @guest_id, @id_no, @first_name, @last_name, @mobile_no, @gender, @passport_no, @address, @email, @country_id )";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@guest_id", GUESTID);
-                cmd.Parameters.AddWithValue("@id_no", TXT_NIC_NO.Text);
-                cmd.Parameters.AddWithValue("@first_name", TXT_F_NAME.Text);
-                cmd.Parameters.AddWithValue("@last_name", TXT_L_NAME.Text);
-                cmd.Parameters.AddWithValue("@mobile_no", TXT_TEL.Text);
-                cmd.Parameters.AddWithValue("@gender", "MALE");
-                cmd.Parameters.AddWithValue("@passport_no", "N/A");
-                cmd.Parameters.AddWithValue("@address", "N/A");
-                cmd.Parameters.AddWithValue("@email", TXT_EMAIL.Text);
-                cmd.Parameters.AddWithValue("@country_id", 199);
-                cmd.ExecuteNonQuery();
-            }
+                Cursor.Current = Cursors.WaitCursor;
+                LOCK_CONTROLLERS();
+                CONNECTION.open_connection();
+                myTrans = CONNECTION.CON.BeginTransaction();
+                cmd.Connection = CONNECTION.CON;
+                cmd.Transaction = myTrans;
 
-                TEMP_GUEST_ID = CLS_METHODS.GET_MAX_STRING_ID("SELECT MAX(guest_id) FROM guest");
-
-                cmd.CommandText = "INSERT INTO reservation ( reservation_id, guest_id, no_of_adult, no_of_child, arrival_date, depature_Date, no_of_nights, reserved_by, agent_id, additional_note,added_date,added_time,added_by,no_of_rooms,tax_status ) VALUES ( @reservation_id, @guest_id, @no_of_adult, @no_of_child, @arrival_date, @depature_Date, @no_of_nights, @reserved_by, @agent_id, @additional_note,@added_date,CURTIME(),@added_by,@no_of_rooms,@tax_status )";
+                cmd.CommandText = "UPDATE reservation SET no_of_adult=@no_of_adult , reserved_by = @reserved_by ,  no_of_child=@no_of_child , arrival_date=@arrival_date , depature_Date=@depature_Date , no_of_nights=@no_of_nights , agent_id=@agent_id , additional_note=@additional_note , updated_date=CURDATE() , updated_time=CURTIME() , updated_by=@updated_by , no_of_rooms=@no_of_rooms WHERE reservation_id=@reservation_id";
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@reservation_id", RESERVATION_ID);
-                cmd.Parameters.AddWithValue("@guest_id", GUESTID);
-                cmd.Parameters.AddWithValue("@no_of_adult", Convert.ToInt16(TXT_ADULT.Text));
-                cmd.Parameters.AddWithValue("@no_of_child", Convert.ToInt16(TXT_CHILD.Text));
+                cmd.Parameters.AddWithValue("@reservation_id", LBL_RESERVATION_ID.Text);
+                cmd.Parameters.AddWithValue("@no_of_adult", Convert.ToInt32(TXT_ADULT.Text));
+                cmd.Parameters.AddWithValue("@no_of_child", Convert.ToInt32(TXT_CHILD.Text));
                 cmd.Parameters.AddWithValue("@arrival_date", DTP_ARRIVAL_DATE.Value.ToShortDateString());
                 cmd.Parameters.AddWithValue("@depature_Date", DTP_DEPATURE_DATE.Value.ToShortDateString());
                 cmd.Parameters.AddWithValue("@no_of_nights", (DTP_DEPATURE_DATE.Value - DTP_ARRIVAL_DATE.Value).TotalDays);
+                cmd.Parameters.AddWithValue("@additional_note", TXT_NOTE.Text);
                 cmd.Parameters.AddWithValue("@reserved_by", CMB_RESERVE_BY.Text);
-                cmd.Parameters.AddWithValue("@no_of_rooms", Convert.ToInt16(TXT_NO_OF_ROOMS.Text));
-                if (CMB_TAX.SelectedIndex == 0)
-                {
-                    cmd.Parameters.AddWithValue("@tax_status", "1");
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@tax_status", "0");
-                }
-                   
                 if (CMB_RESERVE_BY.SelectedIndex == 3)
                 {
                     cmd.Parameters.AddWithValue("@agent_id", CMB_AGENT.SelectedValue);
@@ -574,17 +559,34 @@ namespace CustomWindowsForm.FORMS
                 {
                     cmd.Parameters.AddWithValue("@agent_id", "0");
                 }
+                cmd.Parameters.AddWithValue("@updated_by", CLS_CURRENT_LOGGER.LOGGED_IN_USERID);
+                cmd.Parameters.AddWithValue("@no_of_rooms", Convert.ToInt32(TXT_NO_OF_ROOMS.Text));
+                cmd.ExecuteNonQuery();
 
-                cmd.Parameters.AddWithValue("@additional_note", TXT_NOTE.Text);
-                cmd.Parameters.AddWithValue("@added_date", DateTime.Now.ToShortDateString());
-                cmd.Parameters.AddWithValue("@added_by", CLS_CURRENT_LOGGER.LOGGED_IN_USERID);
+                double[] res = new double[2];
+                res=GetNewFoodPrice();
+
+                cmd.CommandText = "UPDATE recervation_price SET reservation_no=@reservation_no, total_room_charges=@total_room_charges, agent_commitions=@agent_commitions,total_adult_food_charges=@total_adult_food_charges,total_child_food_charges=@total_child_food_charges,additional_service_charge=@additional_service_charge WHERE reservation_no=@reservation_no";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@reservation_no", LBL_RESERVATION_ID.Text);
+                cmd.Parameters.AddWithValue("@total_room_charges", Convert.ToDouble(LBL_TOT_CHARGE_USD.Text));
+                cmd.Parameters.AddWithValue("@agent_commitions", 0);
+                cmd.Parameters.AddWithValue("@total_adult_food_charges", res[0]);
+                cmd.Parameters.AddWithValue("@total_child_food_charges", res[1]);
+                cmd.Parameters.AddWithValue("@additional_service_charge", res[2]);
+                cmd.ExecuteNonQuery();
+
+                
+                cmd.CommandText = "DELETE FROM recerved_rooms WHERE reservation_no=@reservation_no";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@reservation_no", LBL_RESERVATION_ID.Text);
                 cmd.ExecuteNonQuery();
 
                 foreach (ListViewItem lvi in LST_SELECTED_ROOM.Items)
                 {
                     cmd.CommandText = "INSERT INTO recerved_rooms ( reservation_no, room_id, room_charge ) VALUES ( @reservation_no, @room_id, @room_charge)";
                     cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@reservation_no", RESERVATION_ID);
+                    cmd.Parameters.AddWithValue("@reservation_no", LBL_RESERVATION_ID.Text);
                     cmd.Parameters.AddWithValue("@room_id", Convert.ToInt32(lvi.SubItems[0].Text));
                     cmd.Parameters.AddWithValue("@room_charge", Convert.ToDouble(lvi.SubItems[3].Text));
                     cmd.ExecuteNonQuery();
@@ -594,13 +596,11 @@ namespace CustomWindowsForm.FORMS
                     cmd.Parameters.AddWithValue("@room_id", Convert.ToInt32(lvi.SubItems[0].Text));
                     cmd.Parameters.AddWithValue("@current_status", "RESERVED");
                     cmd.ExecuteNonQuery();
-                }
+            }
 
                 myTrans.Commit();
             
-           
-            LBL_RESERVATION_ID.Text = RESERVATION_ID;
-            MSGBOX mdg = new MSGBOX(MessageAlertHeder.Success(), "RESERVATION ADDED SUCCESFULLY"+Environment.NewLine+Environment.NewLine + "RESERVATION NO IS : " +  RESERVATION_ID, MessageAlertImage.Success());
+            MSGBOX mdg = new MSGBOX(MessageAlertHeder.Success(), "RESERVATION UPDATED SUCCESFULLY"+Environment.NewLine+Environment.NewLine + "RESERVATION NO IS : " +  LBL_RESERVATION_ID.Text, MessageAlertImage.Success());
             mdg.ShowDialog();
             BTN_NEW.Focus();
 
@@ -609,55 +609,50 @@ namespace CustomWindowsForm.FORMS
             {
                 Cursor.Current = Cursors.Default;
                 UNLOCK_CONTROLLERS();
-                myTrans.Rollback();
+        myTrans.Rollback();
                 MSGBOX mdg = new MSGBOX(MessageAlertHeder.Error(), EX.Message, MessageAlertImage.Error());
-                mdg.ShowDialog();
+        mdg.ShowDialog();
             }
             finally
             {
                 UNLOCK_CONTROLLERS();
-                Cursor.Current = Cursors.Default;
+        Cursor.Current = Cursors.Default;
                 CONNECTION.close_connection();
             }
 
         }
         private void BTN_SAVE_Click(object sender, EventArgs e)
         {
-            if(TXT_F_NAME.Text.Length==0)
-            {
-                TXT_F_NAME.Focus();
-                MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE ENTER GUEST NAME!", MessageAlertImage.Alert());
-                mdg.ShowDialog();
-            }
-            else if(TXT_TEL.Text.Length==0)
-            {
-                TXT_TEL.Focus();
-                MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE ENTER TELEPHONE NO!", MessageAlertImage.Alert());
-                mdg.ShowDialog();
-            }
-            else if (TXT_ADULT.Text.Length == 0)
+
+            if (TXT_ADULT.Text.Length == 0)
             {
                 TXT_ADULT.Focus();
                 MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE ENTER NO OF ADULTS!", MessageAlertImage.Alert());
                 mdg.ShowDialog();
             }
-           
+
             else if (CMB_RESERVE_BY.SelectedIndex == -1)
             {
                 CMB_RESERVE_BY.Focus();
                 MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE SELECT RESERVATION TYPE!", MessageAlertImage.Alert());
                 mdg.ShowDialog();
             }
-            else if (CMB_RESERVE_BY.SelectedIndex == 3 && CMB_AGENT.SelectedIndex==-1)
+            else if (CMB_RESERVE_BY.SelectedIndex == 3 && CMB_AGENT.SelectedIndex == -1)
             {
                 CMB_RESERVE_BY.Focus();
                 MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE SELECT AGENT!", MessageAlertImage.Alert());
                 mdg.ShowDialog();
             }
-            else if (LST_SELECTED_ROOM.Items.Count==0)
+            else if (LST_SELECTED_ROOM.Items.Count == 0)
             {
-                
+
                 MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE SELECT ROOMS!", MessageAlertImage.Alert());
+                mdg.ShowDialog();
+            }
+            else if (Convert.ToInt32(TXT_NO_OF_ROOMS.Text) <= 0)
+            {
+
+                MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE REMOVE ROOMS  FROM SELECTED ROOM LIST AND SELECT ROOMS AGAIN!", MessageAlertImage.Alert());
                 mdg.ShowDialog();
             }
             else if (Convert.ToInt16(TXT_NO_OF_NIGHTS.Text) == 0)
@@ -665,22 +660,22 @@ namespace CustomWindowsForm.FORMS
                 MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE SELECT SPEND DATES!", MessageAlertImage.Alert());
                 mdg.ShowDialog();
             }
-            else if (CMB_TAX.SelectedIndex== -1)
-            {
-                MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE SELECT TAX TYPE!", MessageAlertImage.Alert());
-                mdg.ShowDialog();
-            }
-            else if (CMB_AGENT.SelectedIndex >-1 && CMB_AGENT.SelectedIndex==-1)
+            else if (CMB_AGENT.SelectedIndex > -1 && CMB_AGENT.SelectedIndex == -1)
             {
                 MSGBOX mdg = new MSGBOX(MessageAlertHeder.Alert(), "PLEASE SELECT AGENT!", MessageAlertImage.Alert());
                 mdg.ShowDialog();
             }
 
             else
-            {
-                BTN_SAVE.Enabled = false;
-                SAVE_RESERVATION();
-                BTN_NEW.Focus();
+            { 
+                DialogResult RS= MessageBox.Show("ARE YOU SURE, ALL CHANGES IS VALIED","ALERT",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if(RS==DialogResult.Yes)
+                {
+                    BTN_SAVE.Enabled = false;
+                    UPDATE_RESERVATION();
+                    BTN_NEW.Focus();
+                }
+               
             }
         }
         private void CLEAR_DATA()
@@ -688,7 +683,7 @@ namespace CustomWindowsForm.FORMS
             LBL_RESERVATION_ID.Text="N/A";
             DTP_RESERVATION_DATE.Value = DateTime.Now;
             TXT_F_NAME.Clear();
-            TXT_L_NAME.Clear();
+            //TXT_L_NAME.Clear();
             TXT_EMAIL.Clear();
             TXT_TEL.Clear();
             TXT_NO_OF_ROOMS.Text = "0";
@@ -705,7 +700,7 @@ namespace CustomWindowsForm.FORMS
            // BTN_MAKE_NEW_AGENT.Visible = false;
             TXT_NOTE.Clear();
             TXT_F_NAME.Enabled = true;
-            TXT_L_NAME.Enabled = true;
+            //TXT_L_NAME.Enabled = true;
             TXT_TEL.Enabled = true;
             TXT_EMAIL.Enabled = true;
             LBL_SELECTED_ROOM_CONDITION.Text = "N/A";
@@ -767,7 +762,7 @@ namespace CustomWindowsForm.FORMS
             try
             {
                 TXT_NO_OF_NIGHTS.Text = Convert.ToUInt32((DTP_DEPATURE_DATE.Value - DTP_ARRIVAL_DATE.Value).TotalDays).ToString();
-                LST_SELECTED_ROOM.Items.Clear();
+                //LST_SELECTED_ROOM.Items.Clear();
                 LOAD_AVAILABLE_ROOMS();
                 calRoomChages();
             }
@@ -781,7 +776,7 @@ namespace CustomWindowsForm.FORMS
             try
             {
                 TXT_NO_OF_NIGHTS.Text = Convert.ToUInt32((DTP_DEPATURE_DATE.Value - DTP_ARRIVAL_DATE.Value).TotalDays).ToString();
-                LST_SELECTED_ROOM.Items.Clear();
+                //LST_SELECTED_ROOM.Items.Clear();
                 LOAD_AVAILABLE_ROOMS();
                 calRoomChages();
                
@@ -803,7 +798,7 @@ namespace CustomWindowsForm.FORMS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                TXT_L_NAME.Focus();
+                //TXT_L_NAME.Focus();
             }
         }
 
@@ -1015,11 +1010,11 @@ namespace CustomWindowsForm.FORMS
         {
             if (e.KeyCode == Keys.Delete)
             {
-                calRoomChages();
+                calRoomChagesAndRemove();
             }
         }
 
-        private void calRoomChages()
+        private void calRoomChagesAndRemove()
         {
             try
             {
@@ -1032,6 +1027,25 @@ namespace CustomWindowsForm.FORMS
                 }
                 LBL_TOT_CHARGE_LKR.Text = (totalPrice * Settings.Default.exchange_rate_lrk).ToString("F2");
                 LBL_TOT_CHARGE_USD.Text = (totalPrice*Convert.ToDouble(TXT_NO_OF_NIGHTS.Text)).ToString("F2");
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        private void calRoomChages()
+        {
+            try
+            {
+
+                double totalPrice = 0;
+                foreach (ListViewItem lst in LST_SELECTED_ROOM.Items)
+                {
+                    totalPrice = totalPrice + Convert.ToDouble(lst.SubItems[3].Text);
+                }
+                LBL_TOT_CHARGE_LKR.Text = (totalPrice * Settings.Default.exchange_rate_lrk).ToString("F2");
+                LBL_TOT_CHARGE_USD.Text = (totalPrice * Convert.ToDouble(TXT_NO_OF_NIGHTS.Text)).ToString("F2");
 
             }
             catch (Exception)
@@ -1061,15 +1075,15 @@ namespace CustomWindowsForm.FORMS
                 }
             }
         }
-        private void LOAD_GUESTS_TO_LISTVIEW()
+        private void LOAD_RESERVATIONS_TO_LISTVIEW()
         {
             try
             {
                 CONNECTION.open_connection();
-                using (MySqlDataAdapter DA = new MySqlDataAdapter("SELECT id_no,first_name,last_name,mobile_no,gender,passport_no,address,email,country.country_name,guest_id FROM guest INNER JOIN country ON (country.id=guest.country_id) WHERE id_no LIKE @id_no", CONNECTION.CON))
+                using (MySqlDataAdapter DA = new MySqlDataAdapter("SELECT reservation.reservation_id , reservation.guest_id , guest.id_no , guest.first_name , guest.last_name , guest.mobile_no , guest.address , reservation.no_of_adult , reservation.no_of_child , reservation.arrival_date , reservation.depature_Date , reservation.no_of_nights , reservation.reserved_by , reservation.agent_id , agent.agent_name , reservation.additional_note , reservation.added_date , reservation.added_time , reservation.added_by , user_login.user_name , reservation.status , reservation.meal_type_id , meal_types.type , reservation.tax_status FROM reservation INNER JOIN guest ON (reservation.guest_id = guest.guest_id) LEFT JOIN agent ON (reservation.agent_id = agent.agent_id) INNER JOIN meal_types ON (meal_types.meal_type_id = reservation.meal_type_id) INNER JOIN user_login ON (user_login.user_id = reservation.added_by) WHERE  reservation.status<>'CHECKED OUT' AND reservation.reservation_id LIKE @search OR guest.id_no LIKE @search OR guest.first_name LIKE @search", CONNECTION.CON))
                 {
                     DA.SelectCommand.Parameters.Clear();
-                    DA.SelectCommand.Parameters.AddWithValue("@id_no", "%" + TXT_NIC_NO.Text + "%");
+                    DA.SelectCommand.Parameters.AddWithValue("@search", "%" + TXT_NIC_NO.Text + "%");
                     DataTable DT = new DataTable();
                     DA.Fill(DT);
                     if (DT.Rows.Count > 0)
@@ -1079,16 +1093,13 @@ namespace CustomWindowsForm.FORMS
                         {
                             ListViewItem LST = new ListViewItem(DR.Field<string>(0));
                             {
-                                LST.SubItems.Add(DR.Field<string>(1));
-                                LST.SubItems.Add(DR.Field<string>(2));
                                 LST.SubItems.Add(DR.Field<string>(3));
                                 LST.SubItems.Add(DR.Field<string>(4));
                                 LST.SubItems.Add(DR.Field<string>(5));
-                                LST.SubItems.Add(DR.Field<string>(6));
-                                LST.SubItems.Add(DR.Field<string>(7));
-                                LST.SubItems.Add(DR.Field<string>(8));
-                                LST.SubItems.Add(DR.Field<string>(9));
-                            }
+                                LST.SubItems.Add(DR.Field<int>(7).ToString());
+                                LST.SubItems.Add(DR.Field<int>(8).ToString());
+                                LST.SubItems.Add(DR.Field<int>(8).ToString());
+                        }
                             LST_GUEST_LIST.Items.Add(LST);
                         }
                         LST_GUEST_LIST.Size = new Size(493, 221);
@@ -1105,18 +1116,19 @@ namespace CustomWindowsForm.FORMS
                 MSGBOX mdg = new MSGBOX(MessageAlertHeder.Error(), EX.Message, MessageAlertImage.Error());
                 mdg.ShowDialog();
             }
-}
+        }
         private void TXT_NIC_NO_TextChanged(object sender, EventArgs e)
         {
             if(TXT_NIC_NO.Text.Length>1)
             {
-                LOAD_GUESTS_TO_LISTVIEW();
+                LOAD_RESERVATIONS_TO_LISTVIEW();
             }
             else
             {
                 LST_GUEST_LIST.Hide();
             }
         }
+
         private string GUEST_ID=string.Empty;
         private string GUEST_F_NAME = string.Empty;
         private string GUEST_L_NAME = string.Empty;
@@ -1138,29 +1150,90 @@ namespace CustomWindowsForm.FORMS
             }
             if (e.KeyCode == Keys.Enter)
             {
-             
-                GUEST_F_NAME = LST_GUEST_LIST.SelectedItems[0].SubItems[1].Text;
-                GUEST_L_NAME = LST_GUEST_LIST.SelectedItems[0].SubItems[2].Text;
-                MOBILE = LST_GUEST_LIST.SelectedItems[0].SubItems[3].Text;
-                GENDER = LST_GUEST_LIST.SelectedItems[0].SubItems[4].Text;
-                PASSPORT_NO = LST_GUEST_LIST.SelectedItems[0].SubItems[5].Text;
-                ADDRESSS = LST_GUEST_LIST.SelectedItems[0].SubItems[6].Text;
-                EMAIL = LST_GUEST_LIST.SelectedItems[0].SubItems[7].Text;
-                COUNTRY = LST_GUEST_LIST.SelectedItems[0].SubItems[8].Text;
-                GUEST_ID = LST_GUEST_LIST.SelectedItems[0].SubItems[9].Text;
+                LBL_RESERVATION_ID.Text= LST_GUEST_LIST.SelectedItems[0].SubItems[0].Text;
+                GET_OTHER_DETAILS();
                 TXT_NIC_NO.Text= LST_GUEST_LIST.SelectedItems[0].SubItems[0].Text;
-                TXT_F_NAME.Text = GUEST_F_NAME;
-                TXT_L_NAME.Text = GUEST_L_NAME;
-                TXT_EMAIL.Text = EMAIL;
-                TXT_TEL.Text = MOBILE;
-
-                TXT_F_NAME.Enabled = false;
-                TXT_L_NAME.Enabled = false;
-                TXT_TEL.Enabled = false;
-                TXT_EMAIL.Enabled = false;
                 LST_GUEST_LIST.Hide();
                 TXT_ADULT.Focus();
+                TXT_ADULT.SelectAll();
+                calRoomChages();
+                GET_RESERVED_NO_DATA(LBL_RESERVATION_ID.Text);
+                LOAD_AVAILABLE_ROOMS();
             }
+        }
+        int noOfNights = 0;
+        private void GET_OTHER_DETAILS()
+        {
+            //try
+            //{
+                CONNECTION.open_connection();
+                using (MySqlDataAdapter DA = new MySqlDataAdapter("SELECT reservation.reservation_id, reservation.guest_id, guest.id_no, guest.first_name, guest.last_name, guest.mobile_no, guest.email, reservation.no_of_rooms, reservation.no_of_adult, reservation.no_of_child, reservation.arrival_date, reservation.depature_Date, reservation.no_of_nights, reservation.reserved_by, IFNULL(reservation.agent_id,0), agent.agent_name, reservation.additional_note, reservation.added_date, reservation.added_time, reservation.added_by, user_login.user_name, reservation.status, reservation.meal_type_id, meal_types.type, reservation.tax_status FROM reservation INNER JOIN guest ON ( reservation.guest_id = guest.guest_id ) LEFT JOIN agent ON ( reservation.agent_id = agent.agent_id ) INNER JOIN meal_types ON ( meal_types.meal_type_id = reservation.meal_type_id ) INNER JOIN user_login ON ( user_login.user_id = reservation.added_by ) WHERE reservation.reservation_id = @reservation_id", CONNECTION.CON))
+                {
+                    DA.SelectCommand.Parameters.Clear();
+                    DA.SelectCommand.Parameters.AddWithValue("@reservation_id",LBL_RESERVATION_ID.Text);
+                    DataTable DT = new DataTable();
+                    DA.Fill(DT);
+                    if (DT.Rows.Count > 0)
+                    {
+                        TXT_F_NAME.Text = DT.Rows[0].Field<String>(3);
+                        TXT_TEL.Text = DT.Rows[0].Field<String>(3);
+                        TXT_NO_OF_ROOMS.Text = DT.Rows[0].Field<int>(7).ToString() ;
+                        TXT_EMAIL.Text = DT.Rows[0].Field<int>(7).ToString();
+                        TXT_ADULT.Text = DT.Rows[0].Field<int>(8).ToString();
+                        TXT_CHILD.Text = DT.Rows[0].Field<int>(9).ToString();
+                        DTP_ARRIVAL_DATE.Value = DT.Rows[0].Field<DateTime>(10);
+                        DTP_DEPATURE_DATE.Value = DT.Rows[0].Field<DateTime>(11);
+                        TXT_NO_OF_NIGHTS.Text = DT.Rows[0].Field<int>(9).ToString();
+                        noOfNights = DT.Rows[0].Field<int>(9);
+                        CMB_RESERVE_BY.Text = DT.Rows[0].Field<String>(13);
+                        if(Convert.ToDouble(DT.Rows[0].Field<Int64>(14))<=0)
+                        {
+                            CMB_AGENT.SelectedValue = -1;
+                            CMB_AGENT.Enabled = false;
+                        }
+                        else
+                        {
+                            CMB_AGENT.Enabled = true;
+                            CMB_AGENT.SelectedValue = DT.Rows[0].Field<Int64>(14);
+                        }
+
+                        TXT_NOTE.Text = DT.Rows[0].Field<String>(16);
+                        if(DT.Rows[0].Field<string>(24)=="1")
+                        {
+                            CMB_TAX.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            CMB_TAX.SelectedIndex = 1;
+                        }
+                    }
+                    else
+                    {
+                        TXT_F_NAME.Text = String.Empty;
+                        TXT_TEL.Text = String.Empty;
+                        TXT_NO_OF_ROOMS.SelectedIndex = -1;
+                        TXT_EMAIL.Text = String.Empty;
+                        TXT_ADULT.Text = "0";
+                        TXT_CHILD.Text = "0";
+                        DTP_ARRIVAL_DATE.Value = DateTime.Now;
+                        DTP_DEPATURE_DATE.Value = DateTime.Now;
+                        TXT_NO_OF_NIGHTS.Text = "0";
+                        CMB_RESERVE_BY.SelectedIndex = -1;
+                        CMB_AGENT.SelectedIndex = -1;
+                        TXT_NOTE.Text = String.Empty;
+                        LST_SELECTED_ROOM.Items.Clear();
+                        flowLayoutPanel1.Controls.Clear();
+                        LBL_TOT_CHARGE_USD.Text = "0.00";
+                        LBL_TOT_CHARGE_LKR.Text = "0.00";
+                        CMB_TAX.SelectedIndex = -1;
+                    }
+                }
+            //}
+            //catch (Exception)
+            //{
+
+            //    throw;
+            //}
         }
 
         private void TXT_NIC_NO_KeyDown(object sender, KeyEventArgs e)
@@ -1212,11 +1285,57 @@ namespace CustomWindowsForm.FORMS
             }
           
         }
-
+        private void GET_RESERVED_NO_DATA(string RESERVATION_NO)
+        {
+            try
+            {
+                using (MySqlDataAdapter DA = new MySqlDataAdapter("SELECT reservation.reservation_id , guest.guest_id , reservation.no_of_rooms , reservation.no_of_adult , reservation.no_of_child , reservation.arrival_date , reservation.depature_Date , reservation.no_of_nights , IFNULL(agent.agent_id,-1) AS agent_id , agent.agent_name , reservation.additional_note , reservation.added_date , reservation.added_time , recerved_rooms.room_id , recerved_rooms.room_charge , room.room_name , room_packages.package_name , room_packages.description FROM reservation INNER JOIN recerved_rooms ON (reservation.reservation_id = recerved_rooms.reservation_no) LEFT JOIN agent ON (agent.agent_id = reservation.agent_id) INNER JOIN guest ON (reservation.guest_id = guest.guest_id) INNER JOIN room ON (room.room_id = recerved_rooms.room_id) INNER JOIN room_packages ON (room.room_package_id = room_packages.room_package_id) WHERE reservation.reservation_id=@reservation_id", CONNECTION.CON))
+                {
+                    DA.SelectCommand.Parameters.Clear();
+                    DA.SelectCommand.Parameters.AddWithValue("@reservation_id", RESERVATION_NO);
+                    DataTable DT = new DataTable();
+                    DA.Fill(DT);
+                    if (DT.Rows.Count > 0)
+                    {
+                        LST_SELECTED_ROOM.Items.Clear();
+                        foreach (DataRow DR in DT.Rows)
+                        {
+                            ListViewItem LST = new ListViewItem(DR.Field<int>("room_id").ToString());
+                            {
+                                LST.SubItems.Add(DR.Field<string>("room_name"));
+                                LST.SubItems.Add(DR.Field<string>("package_name"));
+                                LST.SubItems.Add(DR.Field<double>("room_charge").ToString("F2"));
+                            }
+                            LST_SELECTED_ROOM.Items.Add(LST);
+                        }
+                    }
+                    else
+                    {
+                        LST_SELECTED_ROOM.Items.Clear();
+                    }
+                }
+            }
+            catch (Exception EX)
+            {
+                MSGBOX mdg = new MSGBOX(MessageAlertHeder.Error(), EX.Message, MessageAlertImage.Error());
+                mdg.ShowDialog();
+            }
+        }
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void TXT_F_NAME_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LST_GUEST_LIST_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
 
         private void TXT_ADULT_TextChanged(object sender, EventArgs e)
         {
@@ -1228,14 +1347,9 @@ namespace CustomWindowsForm.FORMS
             calRoomChages();
         }
 
-        private void BTN_PRINT_Click(object sender, EventArgs e)
+        private void TXT_CHILD_Leave(object sender, EventArgs e)
         {
-            if(LBL_RESERVATION_ID.Text!= "N/A")
-            {
-                REPORT.RESERVATION_NO = LBL_RESERVATION_ID.Text;
-                PRINT_GRC P = new PRINT_GRC();
-                P.ShowDialog(); 
-            }
+
         }
     }
 }

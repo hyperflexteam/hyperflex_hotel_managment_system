@@ -417,6 +417,7 @@
             this.LST_GUEST_LIST.UseCompatibleStateImageBehavior = false;
             this.LST_GUEST_LIST.View = System.Windows.Forms.View.Details;
             this.LST_GUEST_LIST.Visible = false;
+            this.LST_GUEST_LIST.SelectedIndexChanged += new System.EventHandler(this.LST_GUEST_LIST_SelectedIndexChanged);
             this.LST_GUEST_LIST.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LST_GUEST_LIST_KeyDown);
             // 
             // columnHeader2

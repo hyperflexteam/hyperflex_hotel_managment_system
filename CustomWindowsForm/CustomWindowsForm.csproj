@@ -236,6 +236,18 @@
     <Compile Include="FORMS\INVOICE_SPLITTER.Designer.cs">
       <DependentUpon>INVOICE_SPLITTER.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORMS\EDIT_RESERVATION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\EDIT_RESERVATION.Designer.cs">
+      <DependentUpon>EDIT_RESERVATION.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\PRINT_GRC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\PRINT_GRC.Designer.cs">
+      <DependentUpon>PRINT_GRC.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMS\SETTINGS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -458,6 +470,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\INVOICE_SPLITTER.resx">
       <DependentUpon>INVOICE_SPLITTER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\EDIT_RESERVATION.resx">
+      <DependentUpon>EDIT_RESERVATION.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\PRINT_GRC.resx">
+      <DependentUpon>PRINT_GRC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\SETTINGS.resx">
       <DependentUpon>SETTINGS.cs</DependentUpon>

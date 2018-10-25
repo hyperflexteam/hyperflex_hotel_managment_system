@@ -1,6 +1,6 @@
 ﻿namespace CustomWindowsForm.FORMS
 {
-    partial class RESERVATION
+    partial class EDIT_RESERVATION
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RESERVATION));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EDIT_RESERVATION));
             this.TopPanel = new System.Windows.Forms.Panel();
             this.CMB_TAX = new CustomWindowsForm.hyflexComboBox();
             this._MinButton = new CustomWindowsForm.ButtonZ();
@@ -46,17 +46,16 @@
             this.BTN_MAKE_NEW_AGENT = new System.Windows.Forms.Button();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TXT_F_NAME = new CustomWindowsForm.hyflexTextbox();
             this.LST_GUEST_LIST = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ReservationNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.F_NAME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.L_NAME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Mobile_No = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Adults = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Childs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.totalNights = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PNL_QUICK_ADD_AGENT = new System.Windows.Forms.Panel();
             this.label24 = new System.Windows.Forms.Label();
             this.TXT_NEW_AGENT_NAME = new CustomWindowsForm.hyflexTextbox();
@@ -103,18 +102,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.TXT_CHILD = new CustomWindowsForm.hyflexTextbox();
             this.TXT_ADULT = new CustomWindowsForm.hyflexTextbox();
             this.TXT_EMAIL = new CustomWindowsForm.hyflexTextbox();
             this.TXT_TEL = new CustomWindowsForm.hyflexTextbox();
             this.TXT_NO_OF_NIGHTS = new CustomWindowsForm.hyflexTextbox();
-            this.TXT_L_NAME = new CustomWindowsForm.hyflexTextbox();
             this.TXT_NIC_NO = new CustomWindowsForm.hyflexTextbox();
-            this.TXT_F_NAME = new CustomWindowsForm.hyflexTextbox();
-            this.BTN_PRINT = new CustomWindowsForm.ShapedButton();
             this.TopPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.PNL_QUICK_ADD_AGENT.SuspendLayout();
@@ -123,7 +117,7 @@
             // 
             // TopPanel
             // 
-            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TopPanel.Controls.Add(this.CMB_TAX);
             this.TopPanel.Controls.Add(this._MinButton);
             this.TopPanel.Controls.Add(this._MaxButton);
@@ -134,7 +128,7 @@
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(1019, 30);
+            this.TopPanel.Size = new System.Drawing.Size(998, 30);
             this.TopPanel.TabIndex = 5;
             this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
             this.TopPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseMove);
@@ -142,6 +136,7 @@
             // 
             // CMB_TAX
             // 
+            this.CMB_TAX.Enabled = false;
             this.CMB_TAX.F_color = System.Drawing.Color.LightGreen;
             this.CMB_TAX.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.CMB_TAX.FormattingEnabled = true;
@@ -158,13 +153,13 @@
             // _MinButton
             // 
             this._MinButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._MinButton.BZBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this._MinButton.BZBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this._MinButton.DisplayText = "_";
             this._MinButton.Enabled = false;
             this._MinButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._MinButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._MinButton.ForeColor = System.Drawing.Color.White;
-            this._MinButton.Location = new System.Drawing.Point(935, 6);
+            this._MinButton.Location = new System.Drawing.Point(914, 3);
             this._MinButton.MouseClickColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(160)))));
             this._MinButton.MouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this._MinButton.Name = "_MinButton";
@@ -179,13 +174,13 @@
             // _MaxButton
             // 
             this._MaxButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._MaxButton.BZBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this._MaxButton.BZBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this._MaxButton.CFormState = CustomWindowsForm.MinMaxButton.CustomFormState.Normal;
             this._MaxButton.DisplayText = "_";
             this._MaxButton.Enabled = false;
             this._MaxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._MaxButton.ForeColor = System.Drawing.Color.White;
-            this._MaxButton.Location = new System.Drawing.Point(966, 6);
+            this._MaxButton.Location = new System.Drawing.Point(945, 4);
             this._MaxButton.MouseClickColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(160)))));
             this._MaxButton.MouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this._MaxButton.Name = "_MaxButton";
@@ -200,16 +195,16 @@
             // _CloseButton
             // 
             this._CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._CloseButton.BZBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this._CloseButton.BZBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this._CloseButton.DisplayText = "X";
             this._CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._CloseButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._CloseButton.ForeColor = System.Drawing.Color.White;
-            this._CloseButton.Location = new System.Drawing.Point(989, 3);
+            this._CloseButton.Location = new System.Drawing.Point(968, 1);
             this._CloseButton.MouseClickColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(160)))));
             this._CloseButton.MouseHoverColor = System.Drawing.Color.Red;
             this._CloseButton.Name = "_CloseButton";
-            this._CloseButton.Size = new System.Drawing.Size(27, 29);
+            this._CloseButton.Size = new System.Drawing.Size(30, 27);
             this._CloseButton.TabIndex = 0;
             this._CloseButton.Text = "X";
             this._CloseButton.TextLocation_X = 6;
@@ -226,7 +221,7 @@
             this.lbl_heder.Name = "lbl_heder";
             this.lbl_heder.Size = new System.Drawing.Size(166, 20);
             this.lbl_heder.TabIndex = 1;
-            this.lbl_heder.Text = "NEW RESERVATION";
+            this.lbl_heder.Text = "EDIT RESERVATION";
             // 
             // label28
             // 
@@ -256,7 +251,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(1017, 30);
+            this.label1.Location = new System.Drawing.Point(996, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(2, 647);
             this.label1.TabIndex = 10;
@@ -277,7 +272,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label3.Location = new System.Drawing.Point(2, 675);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1015, 2);
+            this.label3.Size = new System.Drawing.Size(994, 2);
             this.label3.TabIndex = 12;
             // 
             // panel2
@@ -286,7 +281,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(2, 662);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1015, 13);
+            this.panel2.Size = new System.Drawing.Size(994, 13);
             this.panel2.TabIndex = 13;
             // 
             // BTN_MAKE_NEW_AGENT
@@ -298,7 +293,7 @@
             this.BTN_MAKE_NEW_AGENT.Enabled = false;
             this.BTN_MAKE_NEW_AGENT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_MAKE_NEW_AGENT.ForeColor = System.Drawing.Color.PeachPuff;
-            this.BTN_MAKE_NEW_AGENT.Location = new System.Drawing.Point(590, 218);
+            this.BTN_MAKE_NEW_AGENT.Location = new System.Drawing.Point(580, 212);
             this.BTN_MAKE_NEW_AGENT.Name = "BTN_MAKE_NEW_AGENT";
             this.BTN_MAKE_NEW_AGENT.Size = new System.Drawing.Size(52, 25);
             this.BTN_MAKE_NEW_AGENT.TabIndex = 13;
@@ -308,6 +303,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.TXT_F_NAME);
             this.groupBox1.Controls.Add(this.LST_GUEST_LIST);
             this.groupBox1.Controls.Add(this.PNL_QUICK_ADD_AGENT);
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
@@ -316,7 +313,6 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.TXT_NOTE);
             this.groupBox1.Controls.Add(this.BTN_MAKE_NEW_AGENT);
-            this.groupBox1.Controls.Add(this.BTN_PRINT);
             this.groupBox1.Controls.Add(this.BTN_SAVE);
             this.groupBox1.Controls.Add(this.BTN_NEW);
             this.groupBox1.Controls.Add(this.CMB_AGENT);
@@ -344,90 +340,104 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.TXT_CHILD);
             this.groupBox1.Controls.Add(this.TXT_ADULT);
             this.groupBox1.Controls.Add(this.TXT_EMAIL);
             this.groupBox1.Controls.Add(this.TXT_TEL);
             this.groupBox1.Controls.Add(this.TXT_NO_OF_NIGHTS);
-            this.groupBox1.Controls.Add(this.TXT_L_NAME);
             this.groupBox1.Controls.Add(this.TXT_NIC_NO);
-            this.groupBox1.Controls.Add(this.TXT_F_NAME);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(11, 38);
+            this.groupBox1.Location = new System.Drawing.Point(9, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(993, 623);
+            this.groupBox1.Size = new System.Drawing.Size(978, 623);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SEARCH CHECKED IN";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(422, 56);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(118, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "GUEST FIRST NAME :";
+            // 
+            // TXT_F_NAME
+            // 
+            this.TXT_F_NAME.Enabled = false;
+            this.TXT_F_NAME.F_color = System.Drawing.Color.LightGreen;
+            this.TXT_F_NAME.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.TXT_F_NAME.Location = new System.Drawing.Point(425, 72);
+            this.TXT_F_NAME.Name = "TXT_F_NAME";
+            this.TXT_F_NAME.Size = new System.Drawing.Size(208, 25);
+            this.TXT_F_NAME.TabIndex = 25;
+            this.TXT_F_NAME.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
+            this.TXT_F_NAME.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.String;
+            this.TXT_F_NAME.TextChanged += new System.EventHandler(this.TXT_F_NAME_TextChanged);
+            // 
             // LST_GUEST_LIST
             // 
             this.LST_GUEST_LIST.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LST_GUEST_LIST.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10,
-            this.columnHeader11,
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14});
+            this.ReservationNo,
+            this.F_NAME,
+            this.L_NAME,
+            this.Mobile_No,
+            this.Adults,
+            this.Childs,
+            this.totalNights});
             this.LST_GUEST_LIST.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LST_GUEST_LIST.FullRowSelect = true;
-            this.LST_GUEST_LIST.Location = new System.Drawing.Point(149, 102);
+            this.LST_GUEST_LIST.Location = new System.Drawing.Point(139, 96);
             this.LST_GUEST_LIST.MultiSelect = false;
             this.LST_GUEST_LIST.Name = "LST_GUEST_LIST";
-            this.LST_GUEST_LIST.Size = new System.Drawing.Size(494, 17);
+            this.LST_GUEST_LIST.Size = new System.Drawing.Size(494, 10);
             this.LST_GUEST_LIST.TabIndex = 24;
             this.LST_GUEST_LIST.UseCompatibleStateImageBehavior = false;
             this.LST_GUEST_LIST.View = System.Windows.Forms.View.Details;
             this.LST_GUEST_LIST.Visible = false;
+            this.LST_GUEST_LIST.SelectedIndexChanged += new System.EventHandler(this.LST_GUEST_LIST_SelectedIndexChanged);
             this.LST_GUEST_LIST.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LST_GUEST_LIST_KeyDown);
             // 
-            // columnHeader5
+            // ReservationNo
             // 
-            this.columnHeader5.Width = 0;
+            this.ReservationNo.Text = "ReservationNo";
+            this.ReservationNo.Width = 107;
             // 
-            // columnHeader6
+            // F_NAME
             // 
-            this.columnHeader6.Text = "F NAME";
-            this.columnHeader6.Width = 163;
+            this.F_NAME.Text = "F NAME";
+            this.F_NAME.Width = 80;
             // 
-            // columnHeader7
+            // L_NAME
             // 
-            this.columnHeader7.Text = "L NAME";
-            this.columnHeader7.Width = 204;
+            this.L_NAME.Text = "L NAME";
+            this.L_NAME.Width = 80;
             // 
-            // columnHeader8
+            // Mobile_No
             // 
-            this.columnHeader8.Text = "MOBILE";
-            this.columnHeader8.Width = 120;
+            this.Mobile_No.Text = "Mobile no";
+            this.Mobile_No.Width = 85;
             // 
-            // columnHeader9
+            // Adults
             // 
-            this.columnHeader9.Width = 0;
+            this.Adults.DisplayIndex = 5;
+            this.Adults.Text = "Adults";
+            this.Adults.Width = 70;
             // 
-            // columnHeader10
+            // Childs
             // 
-            this.columnHeader10.Width = 0;
+            this.Childs.DisplayIndex = 4;
+            this.Childs.Text = "Childs";
+            this.Childs.Width = 62;
             // 
-            // columnHeader11
+            // totalNights
             // 
-            this.columnHeader11.Width = 0;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Width = 0;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Width = 0;
+            this.totalNights.Text = "totalNights";
+            this.totalNights.Width = 50;
             // 
             // PNL_QUICK_ADD_AGENT
             // 
@@ -435,7 +445,7 @@
             this.PNL_QUICK_ADD_AGENT.Controls.Add(this.label24);
             this.PNL_QUICK_ADD_AGENT.Controls.Add(this.TXT_NEW_AGENT_NAME);
             this.PNL_QUICK_ADD_AGENT.Controls.Add(this.BTN_ADD_NEW_AGENT);
-            this.PNL_QUICK_ADD_AGENT.Location = new System.Drawing.Point(346, 245);
+            this.PNL_QUICK_ADD_AGENT.Location = new System.Drawing.Point(336, 239);
             this.PNL_QUICK_ADD_AGENT.Name = "PNL_QUICK_ADD_AGENT";
             this.PNL_QUICK_ADD_AGENT.Size = new System.Drawing.Size(297, 15);
             this.PNL_QUICK_ADD_AGENT.TabIndex = 20;
@@ -483,18 +493,18 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(20, 353);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(14, 347);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5, 10, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(960, 210);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(956, 214);
             this.flowLayoutPanel1.TabIndex = 23;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(21, 336);
+            this.label26.Location = new System.Drawing.Point(11, 330);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(113, 13);
             this.label26.TabIndex = 22;
@@ -515,7 +525,7 @@
             this.LST_SELECTED_ROOM.GridLines = true;
             this.LST_SELECTED_ROOM.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.LST_SELECTED_ROOM.HoverSelection = true;
-            this.LST_SELECTED_ROOM.Location = new System.Drawing.Point(656, 32);
+            this.LST_SELECTED_ROOM.Location = new System.Drawing.Point(646, 26);
             this.LST_SELECTED_ROOM.MultiSelect = false;
             this.LST_SELECTED_ROOM.Name = "LST_SELECTED_ROOM";
             this.LST_SELECTED_ROOM.Size = new System.Drawing.Size(324, 299);
@@ -553,7 +563,7 @@
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Location = new System.Drawing.Point(656, 121);
+            this.groupBox2.Location = new System.Drawing.Point(646, 115);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(324, 84);
             this.groupBox2.TabIndex = 19;
@@ -618,7 +628,7 @@
             // 
             this.TXT_NOTE.F_color = System.Drawing.Color.LightGreen;
             this.TXT_NOTE.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_NOTE.Location = new System.Drawing.Point(22, 263);
+            this.TXT_NOTE.Location = new System.Drawing.Point(12, 257);
             this.TXT_NOTE.Multiline = true;
             this.TXT_NOTE.Name = "TXT_NOTE";
             this.TXT_NOTE.Size = new System.Drawing.Size(621, 68);
@@ -642,7 +652,7 @@
             this.BTN_SAVE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.BTN_SAVE.ForeColor = System.Drawing.Color.White;
             this.BTN_SAVE.GradientAngle = 90;
-            this.BTN_SAVE.Location = new System.Drawing.Point(734, 570);
+            this.BTN_SAVE.Location = new System.Drawing.Point(838, 566);
             this.BTN_SAVE.MouseClickColor1 = System.Drawing.Color.Yellow;
             this.BTN_SAVE.MouseClickColor2 = System.Drawing.Color.Red;
             this.BTN_SAVE.MouseHoverColor1 = System.Drawing.Color.Turquoise;
@@ -652,7 +662,7 @@
             this.BTN_SAVE.Size = new System.Drawing.Size(132, 47);
             this.BTN_SAVE.StartColor = System.Drawing.Color.Fuchsia;
             this.BTN_SAVE.TabIndex = 15;
-            this.BTN_SAVE.Text = "SAVE (F10)";
+            this.BTN_SAVE.Text = "UPDATE (F10)";
             this.BTN_SAVE.TextLocation_X = 43;
             this.BTN_SAVE.TextLocation_Y = 20;
             this.BTN_SAVE.Transparent1 = 25;
@@ -675,7 +685,7 @@
             this.BTN_NEW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.BTN_NEW.ForeColor = System.Drawing.Color.White;
             this.BTN_NEW.GradientAngle = 50;
-            this.BTN_NEW.Location = new System.Drawing.Point(551, 16);
+            this.BTN_NEW.Location = new System.Drawing.Point(541, 10);
             this.BTN_NEW.MouseClickColor1 = System.Drawing.Color.Yellow;
             this.BTN_NEW.MouseClickColor2 = System.Drawing.Color.Red;
             this.BTN_NEW.MouseHoverColor1 = System.Drawing.Color.Turquoise;
@@ -706,7 +716,7 @@
             "WEB",
             "AGENT",
             "ON TIME"});
-            this.CMB_AGENT.Location = new System.Drawing.Point(346, 218);
+            this.CMB_AGENT.Location = new System.Drawing.Point(336, 212);
             this.CMB_AGENT.Name = "CMB_AGENT";
             this.CMB_AGENT.Size = new System.Drawing.Size(239, 25);
             this.CMB_AGENT.TabIndex = 13;
@@ -723,7 +733,7 @@
             "WEB",
             "ON TIME",
             "AGENT"});
-            this.CMB_RESERVE_BY.Location = new System.Drawing.Point(130, 218);
+            this.CMB_RESERVE_BY.Location = new System.Drawing.Point(120, 212);
             this.CMB_RESERVE_BY.Name = "CMB_RESERVE_BY";
             this.CMB_RESERVE_BY.Size = new System.Drawing.Size(210, 25);
             this.CMB_RESERVE_BY.TabIndex = 12;
@@ -753,7 +763,7 @@
             "13",
             "14",
             "15"});
-            this.TXT_NO_OF_ROOMS.Location = new System.Drawing.Point(427, 125);
+            this.TXT_NO_OF_ROOMS.Location = new System.Drawing.Point(417, 119);
             this.TXT_NO_OF_ROOMS.Name = "TXT_NO_OF_ROOMS";
             this.TXT_NO_OF_ROOMS.Size = new System.Drawing.Size(215, 25);
             this.TXT_NO_OF_ROOMS.TabIndex = 6;
@@ -766,7 +776,7 @@
             // 
             this.DTP_DEPATURE_DATE.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.DTP_DEPATURE_DATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_DEPATURE_DATE.Location = new System.Drawing.Point(451, 169);
+            this.DTP_DEPATURE_DATE.Location = new System.Drawing.Point(441, 163);
             this.DTP_DEPATURE_DATE.Name = "DTP_DEPATURE_DATE";
             this.DTP_DEPATURE_DATE.Size = new System.Drawing.Size(192, 25);
             this.DTP_DEPATURE_DATE.TabIndex = 10;
@@ -778,7 +788,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label15.ForeColor = System.Drawing.Color.Turquoise;
-            this.label15.Location = new System.Drawing.Point(17, 30);
+            this.label15.Location = new System.Drawing.Point(7, 24);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(156, 20);
             this.label15.TabIndex = 5;
@@ -786,9 +796,10 @@
             // 
             // DTP_RESERVATION_DATE
             // 
+            this.DTP_RESERVATION_DATE.Enabled = false;
             this.DTP_RESERVATION_DATE.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.DTP_RESERVATION_DATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_RESERVATION_DATE.Location = new System.Drawing.Point(21, 78);
+            this.DTP_RESERVATION_DATE.Location = new System.Drawing.Point(11, 72);
             this.DTP_RESERVATION_DATE.Name = "DTP_RESERVATION_DATE";
             this.DTP_RESERVATION_DATE.Size = new System.Drawing.Size(122, 25);
             this.DTP_RESERVATION_DATE.TabIndex = 0;
@@ -798,7 +809,7 @@
             // 
             this.DTP_ARRIVAL_DATE.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.DTP_ARRIVAL_DATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_ARRIVAL_DATE.Location = new System.Drawing.Point(251, 169);
+            this.DTP_ARRIVAL_DATE.Location = new System.Drawing.Point(241, 163);
             this.DTP_ARRIVAL_DATE.Name = "DTP_ARRIVAL_DATE";
             this.DTP_ARRIVAL_DATE.Size = new System.Drawing.Size(187, 25);
             this.DTP_ARRIVAL_DATE.TabIndex = 9;
@@ -809,7 +820,7 @@
             // 
             this.LBL_RESERVATION_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LBL_RESERVATION_ID.ForeColor = System.Drawing.Color.Turquoise;
-            this.LBL_RESERVATION_ID.Location = new System.Drawing.Point(173, 30);
+            this.LBL_RESERVATION_ID.Location = new System.Drawing.Point(163, 24);
             this.LBL_RESERVATION_ID.Name = "LBL_RESERVATION_ID";
             this.LBL_RESERVATION_ID.Size = new System.Drawing.Size(118, 20);
             this.LBL_RESERVATION_ID.TabIndex = 5;
@@ -819,10 +830,10 @@
             // 
             // LBL_TOT_CHARGE_USD
             // 
-            this.LBL_TOT_CHARGE_USD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.LBL_TOT_CHARGE_USD.BackColor = System.Drawing.Color.Maroon;
             this.LBL_TOT_CHARGE_USD.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_TOT_CHARGE_USD.ForeColor = System.Drawing.Color.Yellow;
-            this.LBL_TOT_CHARGE_USD.Location = new System.Drawing.Point(27, 572);
+            this.LBL_TOT_CHARGE_USD.ForeColor = System.Drawing.Color.White;
+            this.LBL_TOT_CHARGE_USD.Location = new System.Drawing.Point(17, 566);
             this.LBL_TOT_CHARGE_USD.Name = "LBL_TOT_CHARGE_USD";
             this.LBL_TOT_CHARGE_USD.Size = new System.Drawing.Size(184, 23);
             this.LBL_TOT_CHARGE_USD.TabIndex = 5;
@@ -831,10 +842,10 @@
             // 
             // LBL_TOT_CHARGE_LKR
             // 
-            this.LBL_TOT_CHARGE_LKR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.LBL_TOT_CHARGE_LKR.BackColor = System.Drawing.Color.Maroon;
             this.LBL_TOT_CHARGE_LKR.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_TOT_CHARGE_LKR.ForeColor = System.Drawing.Color.GreenYellow;
-            this.LBL_TOT_CHARGE_LKR.Location = new System.Drawing.Point(243, 572);
+            this.LBL_TOT_CHARGE_LKR.ForeColor = System.Drawing.Color.White;
+            this.LBL_TOT_CHARGE_LKR.Location = new System.Drawing.Point(233, 566);
             this.LBL_TOT_CHARGE_LKR.Name = "LBL_TOT_CHARGE_LKR";
             this.LBL_TOT_CHARGE_LKR.Size = new System.Drawing.Size(186, 23);
             this.LBL_TOT_CHARGE_LKR.TabIndex = 5;
@@ -846,7 +857,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Consolas", 11F);
             this.label17.ForeColor = System.Drawing.Color.Yellow;
-            this.label17.Location = new System.Drawing.Point(21, 599);
+            this.label17.Location = new System.Drawing.Point(11, 593);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(200, 18);
             this.label17.TabIndex = 5;
@@ -857,7 +868,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Consolas", 11F);
             this.label12.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label12.Location = new System.Drawing.Point(238, 599);
+            this.label12.Location = new System.Drawing.Point(228, 593);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(200, 18);
             this.label12.TabIndex = 5;
@@ -866,7 +877,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(127, 153);
+            this.label10.Location = new System.Drawing.Point(117, 147);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 5;
@@ -875,7 +886,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(424, 109);
+            this.label18.Location = new System.Drawing.Point(414, 103);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(89, 13);
             this.label18.TabIndex = 5;
@@ -885,7 +896,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(868, 16);
+            this.label25.Location = new System.Drawing.Point(858, 10);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(112, 13);
             this.label25.TabIndex = 5;
@@ -895,7 +906,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 153);
+            this.label9.Location = new System.Drawing.Point(6, 147);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(85, 13);
             this.label9.TabIndex = 5;
@@ -905,7 +916,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(149, 109);
+            this.label8.Location = new System.Drawing.Point(139, 103);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 5;
@@ -914,7 +925,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(21, 247);
+            this.label20.Location = new System.Drawing.Point(11, 241);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(111, 13);
             this.label20.TabIndex = 5;
@@ -925,7 +936,7 @@
             // 
             this.LBL_AGENT_NAME.AutoSize = true;
             this.LBL_AGENT_NAME.Enabled = false;
-            this.LBL_AGENT_NAME.Location = new System.Drawing.Point(343, 202);
+            this.LBL_AGENT_NAME.Location = new System.Drawing.Point(333, 196);
             this.LBL_AGENT_NAME.Name = "LBL_AGENT_NAME";
             this.LBL_AGENT_NAME.Size = new System.Drawing.Size(84, 13);
             this.LBL_AGENT_NAME.TabIndex = 5;
@@ -934,7 +945,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 110);
+            this.label4.Location = new System.Drawing.Point(9, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 5;
@@ -943,7 +954,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(127, 202);
+            this.label19.Location = new System.Drawing.Point(117, 196);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(81, 13);
             this.label19.TabIndex = 5;
@@ -952,7 +963,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 202);
+            this.label7.Location = new System.Drawing.Point(6, 196);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 13);
             this.label7.TabIndex = 5;
@@ -961,7 +972,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(448, 153);
+            this.label6.Location = new System.Drawing.Point(438, 147);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 13);
             this.label6.TabIndex = 5;
@@ -970,7 +981,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(249, 153);
+            this.label5.Location = new System.Drawing.Point(239, 147);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 13);
             this.label5.TabIndex = 5;
@@ -979,44 +990,26 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 62);
+            this.label14.Location = new System.Drawing.Point(8, 56);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(125, 13);
             this.label14.TabIndex = 5;
             this.label14.Text = "RESERVATION  DATE :";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(483, 62);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(114, 13);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "GUEST LAST NAME :";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(149, 62);
+            this.label11.Location = new System.Drawing.Point(139, 56);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 13);
+            this.label11.Size = new System.Drawing.Size(254, 13);
             this.label11.TabIndex = 5;
-            this.label11.Text = "GUEST NIC :";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(309, 62);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(118, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "GUEST FIRST NAME :";
+            this.label11.Text = "RESERVATION_NO / GUEST NIC / FIRST_NAME";
             // 
             // TXT_CHILD
             // 
             this.TXT_CHILD.F_color = System.Drawing.Color.LightGreen;
             this.TXT_CHILD.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_CHILD.Location = new System.Drawing.Point(130, 169);
+            this.TXT_CHILD.Location = new System.Drawing.Point(120, 163);
             this.TXT_CHILD.Name = "TXT_CHILD";
             this.TXT_CHILD.Size = new System.Drawing.Size(112, 25);
             this.TXT_CHILD.TabIndex = 8;
@@ -1025,12 +1018,13 @@
             this.TXT_CHILD.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.Numeric;
             this.TXT_CHILD.TextChanged += new System.EventHandler(this.TXT_CHILD_TextChanged);
             this.TXT_CHILD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TXT_CHILD_KeyDown);
+            this.TXT_CHILD.Leave += new System.EventHandler(this.TXT_CHILD_Leave);
             // 
             // TXT_ADULT
             // 
             this.TXT_ADULT.F_color = System.Drawing.Color.LightGreen;
             this.TXT_ADULT.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_ADULT.Location = new System.Drawing.Point(20, 169);
+            this.TXT_ADULT.Location = new System.Drawing.Point(10, 163);
             this.TXT_ADULT.Name = "TXT_ADULT";
             this.TXT_ADULT.Size = new System.Drawing.Size(93, 25);
             this.TXT_ADULT.TabIndex = 7;
@@ -1042,9 +1036,10 @@
             // 
             // TXT_EMAIL
             // 
+            this.TXT_EMAIL.Enabled = false;
             this.TXT_EMAIL.F_color = System.Drawing.Color.LightGreen;
             this.TXT_EMAIL.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_EMAIL.Location = new System.Drawing.Point(149, 125);
+            this.TXT_EMAIL.Location = new System.Drawing.Point(139, 119);
             this.TXT_EMAIL.Name = "TXT_EMAIL";
             this.TXT_EMAIL.Size = new System.Drawing.Size(272, 25);
             this.TXT_EMAIL.TabIndex = 5;
@@ -1054,9 +1049,10 @@
             // 
             // TXT_TEL
             // 
+            this.TXT_TEL.Enabled = false;
             this.TXT_TEL.F_color = System.Drawing.Color.LightGreen;
             this.TXT_TEL.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_TEL.Location = new System.Drawing.Point(21, 125);
+            this.TXT_TEL.Location = new System.Drawing.Point(11, 119);
             this.TXT_TEL.Name = "TXT_TEL";
             this.TXT_TEL.Size = new System.Drawing.Size(122, 25);
             this.TXT_TEL.TabIndex = 4;
@@ -1069,7 +1065,7 @@
             this.TXT_NO_OF_NIGHTS.Enabled = false;
             this.TXT_NO_OF_NIGHTS.F_color = System.Drawing.Color.LightGreen;
             this.TXT_NO_OF_NIGHTS.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_NO_OF_NIGHTS.Location = new System.Drawing.Point(22, 218);
+            this.TXT_NO_OF_NIGHTS.Location = new System.Drawing.Point(12, 212);
             this.TXT_NO_OF_NIGHTS.Name = "TXT_NO_OF_NIGHTS";
             this.TXT_NO_OF_NIGHTS.ReadOnly = true;
             this.TXT_NO_OF_NIGHTS.Size = new System.Drawing.Size(91, 25);
@@ -1078,83 +1074,25 @@
             this.TXT_NO_OF_NIGHTS.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
             this.TXT_NO_OF_NIGHTS.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.Numeric;
             // 
-            // TXT_L_NAME
-            // 
-            this.TXT_L_NAME.F_color = System.Drawing.Color.LightGreen;
-            this.TXT_L_NAME.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_L_NAME.Location = new System.Drawing.Point(486, 78);
-            this.TXT_L_NAME.Name = "TXT_L_NAME";
-            this.TXT_L_NAME.Size = new System.Drawing.Size(157, 25);
-            this.TXT_L_NAME.TabIndex = 3;
-            this.TXT_L_NAME.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
-            this.TXT_L_NAME.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.String;
-            this.TXT_L_NAME.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TXT_L_NAME_KeyDown);
-            // 
             // TXT_NIC_NO
             // 
             this.TXT_NIC_NO.F_color = System.Drawing.Color.LightGreen;
             this.TXT_NIC_NO.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_NIC_NO.Location = new System.Drawing.Point(149, 78);
+            this.TXT_NIC_NO.Location = new System.Drawing.Point(139, 72);
             this.TXT_NIC_NO.Name = "TXT_NIC_NO";
-            this.TXT_NIC_NO.Size = new System.Drawing.Size(157, 25);
+            this.TXT_NIC_NO.Size = new System.Drawing.Size(280, 25);
             this.TXT_NIC_NO.TabIndex = 1;
             this.TXT_NIC_NO.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
             this.TXT_NIC_NO.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.String;
             this.TXT_NIC_NO.TextChanged += new System.EventHandler(this.TXT_NIC_NO_TextChanged);
             this.TXT_NIC_NO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TXT_NIC_NO_KeyDown);
             // 
-            // TXT_F_NAME
-            // 
-            this.TXT_F_NAME.F_color = System.Drawing.Color.LightGreen;
-            this.TXT_F_NAME.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_F_NAME.Location = new System.Drawing.Point(312, 78);
-            this.TXT_F_NAME.Name = "TXT_F_NAME";
-            this.TXT_F_NAME.Size = new System.Drawing.Size(164, 25);
-            this.TXT_F_NAME.TabIndex = 2;
-            this.TXT_F_NAME.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
-            this.TXT_F_NAME.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.String;
-            this.TXT_F_NAME.Enter += new System.EventHandler(this.TXT_F_NAME_Enter);
-            this.TXT_F_NAME.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TXT_F_NAME_KeyDown);
-            // 
-            // BTN_PRINT
-            // 
-            this.BTN_PRINT.BackColor = System.Drawing.Color.Transparent;
-            this.BTN_PRINT.BorderColor = System.Drawing.Color.Transparent;
-            this.BTN_PRINT.BorderWidth = 1;
-            this.BTN_PRINT.ButtonShape = CustomWindowsForm.ShapedButton.ButtonsShapes.RoundRect;
-            this.BTN_PRINT.ButtonText = "";
-            this.BTN_PRINT.EndColor = System.Drawing.Color.Navy;
-            this.BTN_PRINT.FlatAppearance.BorderSize = 0;
-            this.BTN_PRINT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.BTN_PRINT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.BTN_PRINT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_PRINT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.BTN_PRINT.ForeColor = System.Drawing.Color.White;
-            this.BTN_PRINT.GradientAngle = 90;
-            this.BTN_PRINT.Location = new System.Drawing.Point(872, 570);
-            this.BTN_PRINT.MouseClickColor1 = System.Drawing.Color.Yellow;
-            this.BTN_PRINT.MouseClickColor2 = System.Drawing.Color.Red;
-            this.BTN_PRINT.MouseHoverColor1 = System.Drawing.Color.Turquoise;
-            this.BTN_PRINT.MouseHoverColor2 = System.Drawing.Color.DarkSlateGray;
-            this.BTN_PRINT.Name = "BTN_PRINT";
-            this.BTN_PRINT.ShowButtontext = true;
-            this.BTN_PRINT.Size = new System.Drawing.Size(108, 47);
-            this.BTN_PRINT.StartColor = System.Drawing.Color.Fuchsia;
-            this.BTN_PRINT.TabIndex = 15;
-            this.BTN_PRINT.Text = "Print GRC";
-            this.BTN_PRINT.TextLocation_X = 35;
-            this.BTN_PRINT.TextLocation_Y = 20;
-            this.BTN_PRINT.Transparent1 = 25;
-            this.BTN_PRINT.Transparent2 = 250;
-            this.BTN_PRINT.UseVisualStyleBackColor = false;
-            this.BTN_PRINT.Click += new System.EventHandler(this.BTN_PRINT_Click);
-            // 
-            // RESERVATION
+            // EDIT_RESERVATION
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(1019, 677);
+            this.BackColor = System.Drawing.Color.Maroon;
+            this.ClientSize = new System.Drawing.Size(998, 677);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
@@ -1167,7 +1105,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "RESERVATION";
+            this.Name = "EDIT_RESERVATION";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MsgBox";
             this.Load += new System.EventHandler(this.CHECKED_IN_Load);
@@ -1198,8 +1136,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label13;
-        private hyflexTextbox TXT_F_NAME;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private hyflexTextbox TXT_CHILD;
@@ -1229,8 +1165,6 @@
         private System.Windows.Forms.Button BTN_MAKE_NEW_AGENT;
         private System.Windows.Forms.DateTimePicker DTP_RESERVATION_DATE;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label16;
-        private hyflexTextbox TXT_L_NAME;
         private hyflexTextbox TXT_NOTE;
         private hyflexComboBox TXT_NO_OF_ROOMS;
         private System.Windows.Forms.Label label18;
@@ -1257,19 +1191,17 @@
         private System.Windows.Forms.Label label11;
         private hyflexTextbox TXT_NIC_NO;
         private System.Windows.Forms.ListView LST_GUEST_LIST;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader ReservationNo;
+        private System.Windows.Forms.ColumnHeader F_NAME;
+        private System.Windows.Forms.ColumnHeader L_NAME;
+        private System.Windows.Forms.ColumnHeader Mobile_No;
+        private System.Windows.Forms.ColumnHeader Childs;
+        private System.Windows.Forms.ColumnHeader Adults;
+        private System.Windows.Forms.ColumnHeader totalNights;
         private hyflexComboBox CMB_TAX;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
-        private ShapedButton BTN_PRINT;
+        private System.Windows.Forms.Label label13;
+        private hyflexTextbox TXT_F_NAME;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TopPanel = new System.Windows.Forms.Panel();
             this._MinButton = new CustomWindowsForm.ButtonZ();
             this._MaxButton = new CustomWindowsForm.MinMaxButton();
@@ -72,15 +72,16 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.hyflexComboBox1 = new CustomWindowsForm.hyflexComboBox();
-            this.dtp_arrival_date = new System.Windows.Forms.DateTimePicker();
-            this.dtp_depature_date = new System.Windows.Forms.DateTimePicker();
-            this.BTN_NEW = new CustomWindowsForm.ShapedButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.BTN_NEW = new CustomWindowsForm.ShapedButton();
+            this.dtp_depature_date = new System.Windows.Forms.DateTimePicker();
+            this.dtp_arrival_date = new System.Windows.Forms.DateTimePicker();
+            this.hyflexComboBox1 = new CustomWindowsForm.hyflexComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DGV_LIST = new System.Windows.Forms.DataGridView();
+            this.BTN_PRINT = new CustomWindowsForm.ShapedButton();
             this.TopPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStripZ1.SuspendLayout();
@@ -184,7 +185,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.Location = new System.Drawing.Point(830, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(2, 552);
+            this.label1.Size = new System.Drawing.Size(2, 598);
             this.label1.TabIndex = 10;
             // 
             // label2
@@ -193,14 +194,14 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Location = new System.Drawing.Point(0, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(2, 552);
+            this.label2.Size = new System.Drawing.Size(2, 598);
             this.label2.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label3.Location = new System.Drawing.Point(2, 580);
+            this.label3.Location = new System.Drawing.Point(2, 626);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(828, 2);
             this.label3.TabIndex = 12;
@@ -210,7 +211,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panel2.Controls.Add(this.menuStripZ1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(2, 565);
+            this.panel2.Location = new System.Drawing.Point(2, 611);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(828, 15);
             this.panel2.TabIndex = 13;
@@ -470,49 +471,35 @@
             this.groupBox1.Text = "FILTER";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // groupBox2
+            // label5
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.groupBox2.Controls.Add(this.DGV_LIST);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(8, 138);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(811, 421);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "LIST";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label5.Location = new System.Drawing.Point(439, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "DEPARTURE DATE :";
             // 
-            // hyflexComboBox1
+            // label4
             // 
-            this.hyflexComboBox1.F_color = System.Drawing.Color.LightGreen;
-            this.hyflexComboBox1.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.hyflexComboBox1.FormattingEnabled = true;
-            this.hyflexComboBox1.Items.AddRange(new object[] {
-            "RESSERVED LIST",
-            "CHECKED IN LIST",
-            "CHECKED OUT LIST"});
-            this.hyflexComboBox1.Location = new System.Drawing.Point(22, 44);
-            this.hyflexComboBox1.Name = "hyflexComboBox1";
-            this.hyflexComboBox1.Size = new System.Drawing.Size(214, 31);
-            this.hyflexComboBox1.TabIndex = 0;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label4.Location = new System.Drawing.Point(258, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "ARRIVAL DATE :";
             // 
-            // dtp_arrival_date
+            // label6
             // 
-            this.dtp_arrival_date.Font = new System.Drawing.Font("Consolas", 15F);
-            this.dtp_arrival_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_arrival_date.Location = new System.Drawing.Point(261, 44);
-            this.dtp_arrival_date.Name = "dtp_arrival_date";
-            this.dtp_arrival_date.Size = new System.Drawing.Size(159, 31);
-            this.dtp_arrival_date.TabIndex = 1;
-            // 
-            // dtp_depature_date
-            // 
-            this.dtp_depature_date.Font = new System.Drawing.Font("Consolas", 15F);
-            this.dtp_depature_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_depature_date.Location = new System.Drawing.Point(442, 44);
-            this.dtp_depature_date.Name = "dtp_depature_date";
-            this.dtp_depature_date.Size = new System.Drawing.Size(150, 31);
-            this.dtp_depature_date.TabIndex = 1;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label6.Location = new System.Drawing.Point(19, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "TYPE";
             // 
             // BTN_NEW
             // 
@@ -547,35 +534,49 @@
             this.BTN_NEW.UseVisualStyleBackColor = false;
             this.BTN_NEW.Click += new System.EventHandler(this.BTN_NEW_Click);
             // 
-            // label6
+            // dtp_depature_date
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label6.Location = new System.Drawing.Point(19, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "TYPE";
+            this.dtp_depature_date.Font = new System.Drawing.Font("Consolas", 15F);
+            this.dtp_depature_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_depature_date.Location = new System.Drawing.Point(442, 44);
+            this.dtp_depature_date.Name = "dtp_depature_date";
+            this.dtp_depature_date.Size = new System.Drawing.Size(150, 31);
+            this.dtp_depature_date.TabIndex = 1;
             // 
-            // label4
+            // dtp_arrival_date
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label4.Location = new System.Drawing.Point(258, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "ARRIVAL DATE :";
+            this.dtp_arrival_date.Font = new System.Drawing.Font("Consolas", 15F);
+            this.dtp_arrival_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_arrival_date.Location = new System.Drawing.Point(261, 44);
+            this.dtp_arrival_date.Name = "dtp_arrival_date";
+            this.dtp_arrival_date.Size = new System.Drawing.Size(159, 31);
+            this.dtp_arrival_date.TabIndex = 1;
             // 
-            // label5
+            // hyflexComboBox1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label5.Location = new System.Drawing.Point(439, 28);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "DEPARTURE DATE :";
+            this.hyflexComboBox1.F_color = System.Drawing.Color.LightGreen;
+            this.hyflexComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.hyflexComboBox1.FormattingEnabled = true;
+            this.hyflexComboBox1.Items.AddRange(new object[] {
+            "RESSERVED LIST",
+            "CHECKED IN LIST",
+            "CHECKED OUT LIST"});
+            this.hyflexComboBox1.Location = new System.Drawing.Point(22, 44);
+            this.hyflexComboBox1.Name = "hyflexComboBox1";
+            this.hyflexComboBox1.Size = new System.Drawing.Size(214, 25);
+            this.hyflexComboBox1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.groupBox2.Controls.Add(this.DGV_LIST);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(8, 138);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(811, 421);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "LIST";
             // 
             // DGV_LIST
             // 
@@ -583,27 +584,62 @@
             this.DGV_LIST.AllowUserToDeleteRows = false;
             this.DGV_LIST.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.DGV_LIST.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_LIST.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_LIST.DefaultCellStyle = dataGridViewCellStyle1;
             this.DGV_LIST.GridColor = System.Drawing.Color.White;
             this.DGV_LIST.Location = new System.Drawing.Point(7, 20);
             this.DGV_LIST.Name = "DGV_LIST";
             this.DGV_LIST.ReadOnly = true;
+            this.DGV_LIST.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_LIST.Size = new System.Drawing.Size(794, 395);
             this.DGV_LIST.TabIndex = 0;
+            // 
+            // BTN_PRINT
+            // 
+            this.BTN_PRINT.BackColor = System.Drawing.Color.Transparent;
+            this.BTN_PRINT.BorderColor = System.Drawing.Color.Transparent;
+            this.BTN_PRINT.BorderWidth = 1;
+            this.BTN_PRINT.ButtonShape = CustomWindowsForm.ShapedButton.ButtonsShapes.RoundRect;
+            this.BTN_PRINT.ButtonText = "";
+            this.BTN_PRINT.EndColor = System.Drawing.Color.Navy;
+            this.BTN_PRINT.FlatAppearance.BorderSize = 0;
+            this.BTN_PRINT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.BTN_PRINT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.BTN_PRINT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_PRINT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.BTN_PRINT.ForeColor = System.Drawing.Color.White;
+            this.BTN_PRINT.GradientAngle = 90;
+            this.BTN_PRINT.Location = new System.Drawing.Point(701, 559);
+            this.BTN_PRINT.MouseClickColor1 = System.Drawing.Color.Yellow;
+            this.BTN_PRINT.MouseClickColor2 = System.Drawing.Color.Red;
+            this.BTN_PRINT.MouseHoverColor1 = System.Drawing.Color.Turquoise;
+            this.BTN_PRINT.MouseHoverColor2 = System.Drawing.Color.DarkSlateGray;
+            this.BTN_PRINT.Name = "BTN_PRINT";
+            this.BTN_PRINT.ShowButtontext = true;
+            this.BTN_PRINT.Size = new System.Drawing.Size(108, 47);
+            this.BTN_PRINT.StartColor = System.Drawing.Color.Fuchsia;
+            this.BTN_PRINT.TabIndex = 16;
+            this.BTN_PRINT.Text = "Print GRC";
+            this.BTN_PRINT.TextLocation_X = 35;
+            this.BTN_PRINT.TextLocation_Y = 20;
+            this.BTN_PRINT.Transparent1 = 25;
+            this.BTN_PRINT.Transparent2 = 250;
+            this.BTN_PRINT.UseVisualStyleBackColor = false;
+            this.BTN_PRINT.Click += new System.EventHandler(this.BTN_PRINT_Click);
             // 
             // VIEW_RESERVATIONS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(832, 582);
+            this.ClientSize = new System.Drawing.Size(832, 628);
+            this.Controls.Add(this.BTN_PRINT);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
@@ -684,5 +720,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView DGV_LIST;
+        private ShapedButton BTN_PRINT;
     }
 }

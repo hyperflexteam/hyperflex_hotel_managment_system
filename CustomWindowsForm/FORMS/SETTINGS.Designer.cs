@@ -74,25 +74,25 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.TXT_TOTAL_TAX = new CustomWindowsForm.hyflexTextbox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.DGV_TAV = new System.Windows.Forms.DataGridView();
             this.BTN_NEW = new CustomWindowsForm.ShapedButton();
+            this.DGV_TAV = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TXT_TOTAL_TAX = new CustomWindowsForm.hyflexTextbox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.shapedButton1 = new CustomWindowsForm.ShapedButton();
             this.label5 = new System.Windows.Forms.Label();
             this.TXT_EXCHANGE_RATE = new CustomWindowsForm.hyflexTextbox();
-            this.shapedButton1 = new CustomWindowsForm.ShapedButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.TopPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStripZ1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_TAV)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -473,108 +473,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "UPDATE TAX";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.groupBox2.Controls.Add(this.shapedButton1);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.TXT_EXCHANGE_RATE);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(347, 37);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(334, 112);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "UPDATE EXCHANGE RATE";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(347, 155);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(334, 105);
-            this.groupBox3.TabIndex = 14;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "EXTRA SETTINGS";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // TXT_TOTAL_TAX
-            // 
-            this.TXT_TOTAL_TAX.Enabled = false;
-            this.TXT_TOTAL_TAX.F_color = System.Drawing.Color.LightGreen;
-            this.TXT_TOTAL_TAX.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_TOTAL_TAX.Location = new System.Drawing.Point(252, 24);
-            this.TXT_TOTAL_TAX.Name = "TXT_TOTAL_TAX";
-            this.TXT_TOTAL_TAX.Size = new System.Drawing.Size(76, 25);
-            this.TXT_TOTAL_TAX.TabIndex = 8;
-            this.TXT_TOTAL_TAX.Text = "0";
-            this.TXT_TOTAL_TAX.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
-            this.TXT_TOTAL_TAX.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.Numeric;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 30);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(71, 13);
-            this.label16.TabIndex = 7;
-            this.label16.Text = "LIST OF TAX";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(198, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "TOTAL :";
-            // 
-            // DGV_TAV
-            // 
-            this.DGV_TAV.AllowUserToAddRows = false;
-            this.DGV_TAV.AllowUserToDeleteRows = false;
-            this.DGV_TAV.AllowUserToResizeColumns = false;
-            this.DGV_TAV.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9.75F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV_TAV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGV_TAV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.DGV_TAV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_TAV.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DGV_TAV.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.DGV_TAV.Location = new System.Drawing.Point(9, 55);
-            this.DGV_TAV.MultiSelect = false;
-            this.DGV_TAV.Name = "DGV_TAV";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV_TAV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DGV_TAV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_TAV.Size = new System.Drawing.Size(319, 121);
-            this.DGV_TAV.TabIndex = 9;
-            this.DGV_TAV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_TAV_CellEndEdit);
-            // 
             // BTN_NEW
             // 
             this.BTN_NEW.BackColor = System.Drawing.Color.Transparent;
@@ -608,6 +506,50 @@
             this.BTN_NEW.UseVisualStyleBackColor = false;
             this.BTN_NEW.Click += new System.EventHandler(this.BTN_NEW_Click);
             // 
+            // DGV_TAV
+            // 
+            this.DGV_TAV.AllowUserToAddRows = false;
+            this.DGV_TAV.AllowUserToDeleteRows = false;
+            this.DGV_TAV.AllowUserToResizeColumns = false;
+            this.DGV_TAV.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9.75F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV_TAV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGV_TAV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DGV_TAV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_TAV.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DGV_TAV.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.DGV_TAV.Location = new System.Drawing.Point(9, 55);
+            this.DGV_TAV.MultiSelect = false;
+            this.DGV_TAV.Name = "DGV_TAV";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV_TAV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DGV_TAV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGV_TAV.Size = new System.Drawing.Size(319, 121);
+            this.DGV_TAV.TabIndex = 9;
+            this.DGV_TAV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_TAV_CellEndEdit);
+            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "tax_type_id";
@@ -629,27 +571,51 @@
             this.Column3.Name = "Column3";
             this.Column3.Width = 120;
             // 
-            // label5
+            // TXT_TOTAL_TAX
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(202, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "NEW EXCHAGE RATE ( 1USD =LKR ? )";
+            this.TXT_TOTAL_TAX.Enabled = false;
+            this.TXT_TOTAL_TAX.F_color = System.Drawing.Color.LightGreen;
+            this.TXT_TOTAL_TAX.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.TXT_TOTAL_TAX.Location = new System.Drawing.Point(252, 24);
+            this.TXT_TOTAL_TAX.Name = "TXT_TOTAL_TAX";
+            this.TXT_TOTAL_TAX.Size = new System.Drawing.Size(76, 25);
+            this.TXT_TOTAL_TAX.TabIndex = 8;
+            this.TXT_TOTAL_TAX.Text = "0";
+            this.TXT_TOTAL_TAX.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
+            this.TXT_TOTAL_TAX.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.Numeric;
             // 
-            // TXT_EXCHANGE_RATE
+            // label4
             // 
-            this.TXT_EXCHANGE_RATE.Enabled = false;
-            this.TXT_EXCHANGE_RATE.F_color = System.Drawing.Color.LightGreen;
-            this.TXT_EXCHANGE_RATE.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TXT_EXCHANGE_RATE.Location = new System.Drawing.Point(19, 55);
-            this.TXT_EXCHANGE_RATE.Name = "TXT_EXCHANGE_RATE";
-            this.TXT_EXCHANGE_RATE.Size = new System.Drawing.Size(190, 25);
-            this.TXT_EXCHANGE_RATE.TabIndex = 8;
-            this.TXT_EXCHANGE_RATE.Text = "0";
-            this.TXT_EXCHANGE_RATE.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
-            this.TXT_EXCHANGE_RATE.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.Numeric;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(198, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "TOTAL :";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 30);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "LIST OF TAX";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.groupBox2.Controls.Add(this.shapedButton1);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.TXT_EXCHANGE_RATE);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(347, 37);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(334, 112);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "UPDATE EXCHANGE RATE";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // shapedButton1
             // 
@@ -684,6 +650,39 @@
             this.shapedButton1.UseVisualStyleBackColor = false;
             this.shapedButton1.Click += new System.EventHandler(this.shapedButton1_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(202, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "NEW EXCHAGE RATE ( 1USD =LKR ? )";
+            // 
+            // TXT_EXCHANGE_RATE
+            // 
+            this.TXT_EXCHANGE_RATE.F_color = System.Drawing.Color.LightGreen;
+            this.TXT_EXCHANGE_RATE.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.TXT_EXCHANGE_RATE.Location = new System.Drawing.Point(19, 55);
+            this.TXT_EXCHANGE_RATE.Name = "TXT_EXCHANGE_RATE";
+            this.TXT_EXCHANGE_RATE.Size = new System.Drawing.Size(190, 25);
+            this.TXT_EXCHANGE_RATE.TabIndex = 8;
+            this.TXT_EXCHANGE_RATE.Text = "0";
+            this.TXT_EXCHANGE_RATE.User_null_check = CustomWindowsForm.hyflexTextbox.Resust.False;
+            this.TXT_EXCHANGE_RATE.User_selection = CustomWindowsForm.hyflexTextbox.String_Type.Numeric;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(347, 155);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(334, 105);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "EXTRA SETTINGS";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
             // SETTINGS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,9 +711,9 @@
             this.menuStripZ1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_TAV)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_TAV)).EndInit();
             this.ResumeLayout(false);
 
         }

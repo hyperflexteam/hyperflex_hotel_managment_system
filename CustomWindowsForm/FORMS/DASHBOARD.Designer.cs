@@ -43,6 +43,7 @@
             this.rETURNSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.aDDRESERVATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eDITRESERVATIONToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cHECKINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cHECKOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pAYMENTSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,16 +144,17 @@
             this.LeftTopPanel_1 = new System.Windows.Forms.Panel();
             this.LeftTopPanel_2 = new System.Windows.Forms.Panel();
             this.pnl_quickLaunch = new System.Windows.Forms.FlowLayoutPanel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btn_MealPlans = new System.Windows.Forms.Button();
-            this.btn_CheckedOut = new System.Windows.Forms.Button();
+            this.btn_NewGRN = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.btn_Reservation = new System.Windows.Forms.Button();
             this.btn_CheckedIn = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.btn_NewGRN = new System.Windows.Forms.Button();
+            this.btn_CheckedOut = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.nEWGUESTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TopPanel.SuspendLayout();
             this.menuStripZ2.SuspendLayout();
             this.menuStripZ1.SuspendLayout();
@@ -249,9 +251,9 @@
             this.mANAGEToolStripMenuItem,
             this.rEPOERTSToolStripMenuItem,
             this.toolStripMenuItem20});
-            this.menuStripZ2.Location = new System.Drawing.Point(496, 22);
+            this.menuStripZ2.Location = new System.Drawing.Point(234, 22);
             this.menuStripZ2.Name = "menuStripZ2";
-            this.menuStripZ2.Size = new System.Drawing.Size(571, 28);
+            this.menuStripZ2.Size = new System.Drawing.Size(833, 28);
             this.menuStripZ2.TabIndex = 20;
             this.menuStripZ2.Text = "menuStripZ2";
             // 
@@ -303,6 +305,7 @@
             // 
             this.toolStripMenuItem11.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aDDRESERVATIONToolStripMenuItem,
+            this.eDITRESERVATIONToolStripMenuItem1,
             this.cHECKINToolStripMenuItem,
             this.cHECKOUTToolStripMenuItem,
             this.pAYMENTSToolStripMenuItem,
@@ -329,8 +332,16 @@
             this.aDDRESERVATIONToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.aDDRESERVATIONToolStripMenuItem.Name = "aDDRESERVATIONToolStripMenuItem";
             this.aDDRESERVATIONToolStripMenuItem.Size = new System.Drawing.Size(268, 24);
-            this.aDDRESERVATIONToolStripMenuItem.Text = "ADD RESERVATION";
+            this.aDDRESERVATIONToolStripMenuItem.Text = "NEW RESERVATION";
             this.aDDRESERVATIONToolStripMenuItem.Click += new System.EventHandler(this.aDDRESERVATIONToolStripMenuItem_Click);
+            // 
+            // eDITRESERVATIONToolStripMenuItem1
+            // 
+            this.eDITRESERVATIONToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.eDITRESERVATIONToolStripMenuItem1.Name = "eDITRESERVATIONToolStripMenuItem1";
+            this.eDITRESERVATIONToolStripMenuItem1.Size = new System.Drawing.Size(268, 24);
+            this.eDITRESERVATIONToolStripMenuItem1.Text = "EDIT RESERVATION";
+            this.eDITRESERVATIONToolStripMenuItem1.Click += new System.EventHandler(this.eDITRESERVATIONToolStripMenuItem1_Click);
             // 
             // cHECKINToolStripMenuItem
             // 
@@ -555,7 +566,8 @@
             this.sUPPLIERSToolStripMenuItem,
             this.tRAVELAGENTSToolStripMenuItem,
             this.toolStripSeparator13,
-            this.oTHERTRANSACRIONCATEGORIESToolStripMenuItem});
+            this.oTHERTRANSACRIONCATEGORIESToolStripMenuItem,
+            this.nEWGUESTToolStripMenuItem});
             this.mANAGEToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.mANAGEToolStripMenuItem.Name = "mANAGEToolStripMenuItem";
             this.mANAGEToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
@@ -1266,6 +1278,10 @@
             this.pnl_quickLaunch.TabIndex = 16;
             this.pnl_quickLaunch.DragLeave += new System.EventHandler(this.pnl_quickLaunch_DragLeave);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // btn_MealPlans
             // 
             this.btn_MealPlans.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(64)))), ((int)(((byte)(74)))));
@@ -1285,24 +1301,43 @@
             this.btn_MealPlans.UseVisualStyleBackColor = false;
             this.btn_MealPlans.Click += new System.EventHandler(this.button5_Click);
             // 
-            // btn_CheckedOut
+            // btn_NewGRN
             // 
-            this.btn_CheckedOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(64)))), ((int)(((byte)(74)))));
-            this.btn_CheckedOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_CheckedOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_CheckedOut.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CheckedOut.ForeColor = System.Drawing.Color.White;
-            this.btn_CheckedOut.Image = ((System.Drawing.Image)(resources.GetObject("btn_CheckedOut.Image")));
-            this.btn_CheckedOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_CheckedOut.Location = new System.Drawing.Point(10, 433);
-            this.btn_CheckedOut.Margin = new System.Windows.Forms.Padding(10, 3, 3, 10);
-            this.btn_CheckedOut.Name = "btn_CheckedOut";
-            this.btn_CheckedOut.Size = new System.Drawing.Size(92, 69);
-            this.btn_CheckedOut.TabIndex = 8;
-            this.btn_CheckedOut.Text = "CHECKED OUT";
-            this.btn_CheckedOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_CheckedOut.UseVisualStyleBackColor = false;
-            this.btn_CheckedOut.Click += new System.EventHandler(this.button3_Click);
+            this.btn_NewGRN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(64)))), ((int)(((byte)(74)))));
+            this.btn_NewGRN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_NewGRN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_NewGRN.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NewGRN.ForeColor = System.Drawing.Color.White;
+            this.btn_NewGRN.Image = ((System.Drawing.Image)(resources.GetObject("btn_NewGRN.Image")));
+            this.btn_NewGRN.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_NewGRN.Location = new System.Drawing.Point(10, 105);
+            this.btn_NewGRN.Margin = new System.Windows.Forms.Padding(10, 3, 3, 10);
+            this.btn_NewGRN.Name = "btn_NewGRN";
+            this.btn_NewGRN.Size = new System.Drawing.Size(92, 69);
+            this.btn_NewGRN.TabIndex = 8;
+            this.btn_NewGRN.Text = "GRN";
+            this.btn_NewGRN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_NewGRN.UseVisualStyleBackColor = false;
+            this.btn_NewGRN.Click += new System.EventHandler(this.btn_NewGRN_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(64)))), ((int)(((byte)(74)))));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(10, 187);
+            this.button2.Margin = new System.Windows.Forms.Padding(10, 3, 3, 10);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(92, 69);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "VIEW STOCK";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // btn_Reservation
             // 
@@ -1342,47 +1377,24 @@
             this.btn_CheckedIn.UseVisualStyleBackColor = false;
             this.btn_CheckedIn.Click += new System.EventHandler(this.button4_Click);
             // 
-            // timer1
+            // btn_CheckedOut
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(64)))), ((int)(((byte)(74)))));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(10, 187);
-            this.button2.Margin = new System.Windows.Forms.Padding(10, 3, 3, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 69);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "VIEW STOCK";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // btn_NewGRN
-            // 
-            this.btn_NewGRN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(64)))), ((int)(((byte)(74)))));
-            this.btn_NewGRN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_NewGRN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_NewGRN.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewGRN.ForeColor = System.Drawing.Color.White;
-            this.btn_NewGRN.Image = ((System.Drawing.Image)(resources.GetObject("btn_NewGRN.Image")));
-            this.btn_NewGRN.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_NewGRN.Location = new System.Drawing.Point(10, 105);
-            this.btn_NewGRN.Margin = new System.Windows.Forms.Padding(10, 3, 3, 10);
-            this.btn_NewGRN.Name = "btn_NewGRN";
-            this.btn_NewGRN.Size = new System.Drawing.Size(92, 69);
-            this.btn_NewGRN.TabIndex = 8;
-            this.btn_NewGRN.Text = "GRN";
-            this.btn_NewGRN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_NewGRN.UseVisualStyleBackColor = false;
-            this.btn_NewGRN.Click += new System.EventHandler(this.btn_NewGRN_Click);
+            this.btn_CheckedOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(64)))), ((int)(((byte)(74)))));
+            this.btn_CheckedOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_CheckedOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_CheckedOut.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CheckedOut.ForeColor = System.Drawing.Color.White;
+            this.btn_CheckedOut.Image = ((System.Drawing.Image)(resources.GetObject("btn_CheckedOut.Image")));
+            this.btn_CheckedOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_CheckedOut.Location = new System.Drawing.Point(10, 433);
+            this.btn_CheckedOut.Margin = new System.Windows.Forms.Padding(10, 3, 3, 10);
+            this.btn_CheckedOut.Name = "btn_CheckedOut";
+            this.btn_CheckedOut.Size = new System.Drawing.Size(92, 69);
+            this.btn_CheckedOut.TabIndex = 8;
+            this.btn_CheckedOut.Text = "CHECKED OUT";
+            this.btn_CheckedOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_CheckedOut.UseVisualStyleBackColor = false;
+            this.btn_CheckedOut.Click += new System.EventHandler(this.button3_Click);
             // 
             // button3
             // 
@@ -1440,6 +1452,14 @@
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
+            // nEWGUESTToolStripMenuItem
+            // 
+            this.nEWGUESTToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.nEWGUESTToolStripMenuItem.Name = "nEWGUESTToolStripMenuItem";
+            this.nEWGUESTToolStripMenuItem.Size = new System.Drawing.Size(316, 24);
+            this.nEWGUESTToolStripMenuItem.Text = "NEW GUEST";
+            this.nEWGUESTToolStripMenuItem.Click += new System.EventHandler(this.nEWGUESTToolStripMenuItem_Click);
             // 
             // DASHBOARD
             // 
@@ -1609,5 +1629,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ToolStripMenuItem eDITRESERVATIONToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nEWGUESTToolStripMenuItem;
     }
 }

@@ -1,4 +1,6 @@
 ﻿using CustomWindowsForm.CLASS;
+using HYFLEX_HMS.CLASS;
+using HYFLEX_HMS.FORMS;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -207,6 +209,16 @@ namespace CustomWindowsForm.FORMS
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void BTN_PRINT_Click(object sender, EventArgs e)
+        {
+            if (DGV_LIST.SelectedRows[0].Cells[0].Value != "N/A")
+            {
+                REPORT.RESERVATION_NO = DGV_LIST.SelectedRows[0].Cells[0].Value.ToString();
+                PRINT_GRC P = new PRINT_GRC();
+                P.ShowDialog();
+            }
         }
     }
 }

@@ -568,7 +568,6 @@ namespace CustomWindowsForm.FORMS
                 if (LST_GUEST_LIST.Items[0].Selected == true)
                 {
                     TXT_GUEST_NAME.Focus();
-
                 }
             }
 
@@ -1213,6 +1212,11 @@ namespace CustomWindowsForm.FORMS
         }
 
         private void CMB_ADDITIONAL_SERVICE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LST_GUEST_LIST_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
